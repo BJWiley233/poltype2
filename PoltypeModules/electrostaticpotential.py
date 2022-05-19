@@ -48,6 +48,7 @@ def gen_esp_grid(poltype,mol,gridnamelist,espnamelist,fchknamelist,cubenamelist)
     potnamelist=[]
     use_gaus=CheckIfLogFileUsingGaussian(poltype,poltype.logespfname)
     if use_gaus==False:
+        print(espnamelist)
         for i in range(len(gridnamelist)):
             gridname=gridnamelist[i]
             espname=espnamelist[i]
@@ -555,7 +556,7 @@ def SPForESP(poltype,optmolist,molist,xyzfnamelist,keyfnamelist):
         fchknamelist.append(fckespfname)
         espgrdfname=xyzfname.replace('.xyz','.grid')
         gridnamelist.append(espgrdfname)
-        espname=espgrdfname.replace('.grid','esp.dat')
+        espname=espgrdfname.replace('.grid','.esp.dat')
         espnamelist.append(espname)
         if not os.path.isfile(espgrdfname):
             gengridcmd = poltype.potentialexe + " 1 " + xyzfname+' -k '+keyfname
